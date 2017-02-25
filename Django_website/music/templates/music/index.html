@@ -1,0 +1,18 @@
+{%  extends "music/base.html" %}
+
+{% block title%}Home Page{% endblock %}
+
+
+{% block body %}
+{% if all_album %}
+    <ul>
+        {% for album in all_album %}
+            <!--<li><a href="/music/{{ album.id }}/">{{ album.album_title }}</a></li> -->
+            <!-- using namespace and get url from url.py-->
+            <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>You don't have album</h3>
+{% endif %}
+{% endblock %}
